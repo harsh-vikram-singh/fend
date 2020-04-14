@@ -26,6 +26,8 @@ const sections = document.querySelectorAll("section");
  * Start Helper Functions
  *
 */
+
+/////////////////////// helper functions to create nav-bar //////////////////////////////////////
 // a function that returns a document fragment that can be added to the document, parentUl in this case
 const getFragment = () => {
     const fragment = document.createDocumentFragment();
@@ -43,6 +45,28 @@ const makeNavBar = () => {
     return;
 };
 
+////////////////////// helper functions to get the position of various elements corresponding to navbar ///////////////
+parentUl.addEventListener('click', (event) => {
+    const target = event.target.innerText;
+    const targetId = target.toLowerCase().split(" ").join("");
+    console.log(targetId);
+    const scrollTo = document.getElementById(targetId);
+    console.dir(scrollTo.getBoundingClientRect());
+    const { x, y } = scrollTo.getBoundingClientRect();
+    console.log(x, y);
+    scrollTo.scrollIntoView();
+    makeActive(scrollTo, 'your-active-class');
+})
+
+const makeActive = (targetId, className) => {
+    for (section of sections) {
+        if (!section.getAttribute('id') == targetId) {
+            section.classList.remove(className);
+        } else {
+            section.classList.add(className);
+        }
+    }
+}
 
 
 /**
