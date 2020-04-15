@@ -2,12 +2,16 @@
 
 ## Table of Contents
 
-* [Instructions](#instructions)
+* [Overview](#Overview)
 
-## Instructions
+## Overview
 
-The starter project has some HTML and CSS styling to display a static version of the Landing Page project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+This page was built as an exercise to better understand DOM manipulation. The navbar is build dynamically for all the sections of the page. Clicking on any one section scrolls the webpage to the appropriate section using the id.
 
-To get started, open `js/app.js` and start building out the app's functionality
+The process is as follows:
 
-For specific, detailed instructions, look at the project instructions in the Udacity Classroom.
+* Select all sections of the page using `querySelectorAll()`
+* Loop over the sections and make a `li` element for each. Set appropriate `class` and `innerText`, and add those in a `documentFragment`
+* Add the fragment to the `ul` in the `nav` section. It is made a `flex` container to properly align items in a horizontal manner
+* Event listener is setup to listed for the clicks on the `ul`, and target element's value is captured to determine which `li` item was clicked
+* Using the `element.scrollIntoView` with `behaviour: "smooth"` property, the page scrolls to the appropriate section with a smooth transition.

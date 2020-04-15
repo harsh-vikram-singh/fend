@@ -78,6 +78,12 @@ makeNavBar();
  * Begin Events
  *
 */
+
+/**
+ * An event listner that listens for the click event
+ * on the 'UL' element, and scrolls to the appropriate
+ * section of the page
+*/
 parentUl.addEventListener('click', (event) => {
     const target = event.target.innerText;
     const targetId = target.toLowerCase().split(" ").join("");
