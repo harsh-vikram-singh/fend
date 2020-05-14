@@ -45,25 +45,14 @@ const makeNavBar = () => {
     return;
 };
 
-////////////////////// helper functions to get the position of various elements corresponding to navbar ///////////////
-parentUl.addEventListener('click', (event) => {
-    const target = event.target.innerText;
-    const targetId = target.toLowerCase().split(" ").join("");
-    console.log(targetId);
-    const scrollTo = document.getElementById(targetId);
-    console.dir(scrollTo.getBoundingClientRect());
-    const { x, y } = scrollTo.getBoundingClientRect();
-    console.log(x, y);
-    scrollTo.scrollIntoView();
-    makeActive(scrollTo, 'your-active-class');
-})
-
+////////////////////// helper functions to make a section active ///////////////
 const makeActive = (targetId, className) => {
+    console.log('target_id: ', targetId, ', className: ', className)
     for (section of sections) {
-        if (!section.getAttribute('id') == targetId) {
-            section.classList.remove(className);
-        } else {
+        if (section.getAttribute('id') == targetId) {
             section.classList.add(className);
+        } else {
+            section.classList.remove(className);
         }
     }
 }
@@ -90,7 +79,19 @@ makeNavBar();
  *
 */
 
-// Build menu 
+/**
+ * An event listner that listens for the click event
+ * on the 'UL' element, and scrolls to the appropriate
+ * section of the page
+*/
+parentUl.addEventListener('click', (event) => {
+    const target = event.target.innerText;
+    const targetId = target.toLowerCase().split(" ").join("");
+    const scrollTo = document.getElementById(targetId);
+    scrollTo.scrollIntoView({ behavior: "smooth" });
+    makeActive(targetId, 'your-active-class');
+})
+// Build menu
 
 // Scroll to section on link click
 
