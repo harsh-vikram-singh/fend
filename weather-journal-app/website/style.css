@@ -109,3 +109,9 @@ button:focus {
     font-family: 'Oswald', sans-serif;
 
 }
+
+/* added by Harsh to improve the layout a little */
+.holder {
+    display: flex;
+    flex-direction: column;
+}

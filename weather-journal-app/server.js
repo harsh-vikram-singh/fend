@@ -7,7 +7,7 @@ const express = require('express');
 // Start up an instance of app
 const app = express();
 
-/* Middleware*/
+/* Middleware */
 
 const bodyParser = require('body-parser');
 //Here we are configuring express to use body-parser as middle-ware.
@@ -38,8 +38,12 @@ app.get('/projectdata', (req, res) => {
 
 app.post('/projectData', (req, res) => {
   console.log('POST request to endpoint /projectdata')
-  console.log(req.data)
-  res.send('project data updated')
+  console.log(req.body)
+  projectData['temperature'] = req.body.temperature;
+  projectData['date'] = req.body.date;
+  projectData['userResponse'] = req.body.userResponse;
+  // console.log('new object created:', projectData)
+  res.send(projectData);
 })
 
 function listening() {
