@@ -67,7 +67,27 @@ const makeActive = (targetId, className) => {
 // build the nav
 makeNavBar();
 
-// Add class 'active' to section when near top of viewport
+// TODO: Add class 'active' to section when near top of viewport
+// function taken from : https://vanillajstoolkit.com/helpers/isinviewport/ based on reviewer comment
+var isInViewport = function (elem) {
+    var distance = elem.getBoundingClientRect();
+    return (
+        distance.top >= 0 &&
+        distance.left >= 0 &&
+        distance.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        distance.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+};
+
+window.addEventListener('scroll', function () {
+    allSections = document.querySelectorAll('section');
+    for (section of allSections) {
+        var dist = section.getBoundingClientRect();
+        if (dist.y < 215 && dist.y > 0) {
+            makeActive(section.id, 'your-active-class')
+        }
+    }
+})
 
 
 // Scroll to anchor ID using scrollTO event
