@@ -1,12 +1,12 @@
 /* Global Variables */
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip='
-const key = '&appid=4bca55d07094f42e10d3cb5ce010c69c'
+const key = '&appid=4bca55d07094f42e10d3cb5ce010c69c&units=metric'
 var postData = {};
 
 
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
+let newDate = (d.getMonth() + 1) + '.' + d.getDate() + '.' + d.getFullYear();
 
 // helper functions
 
@@ -18,7 +18,7 @@ queryWeatherApi = async (baseURL, key) => {
     // console.log('received the following data from the api')
     data = await result.json()
     postData = {
-      temperature: data.main.temp,
+      temperature: data.main.temp + ' degree celsius',
       date: newDate,
       userResponse: getUserFeelings()
     }
@@ -48,6 +48,18 @@ async function sendPostData(postData) {
   return response.json()
 }
 
+// sending GET request to the server to get the user's data entered
+async function getUserData() {
+  const resp = await fetch('http://localhost:8000/projectdata');
+  try {
+    const userData = await resp.json();
+    return userData;
+  } catch (e) {
+    console.log('some error occurred in fetching the data from the server')
+    console.log(e)
+  }
+}
+
 // updating the ui elements
 function updateUiElements(postData) {
   // console.log('func: updateUiElements')
@@ -55,9 +67,9 @@ function updateUiElements(postData) {
   const content = document.querySelector('#content');
   const temp = document.querySelector('#temp')
 
-  date.innerText = postData.date;
-  temp.innerText = postData.temperature;
-  content.innerText = postData.userResponse;
+  date.innerHTML = postData.date;
+  temp.innerHTML = postData.temperature;
+  content.innerHTML = postData.userResponse;
 }
 
 // wrapper function to do the following tasks:
@@ -67,7 +79,8 @@ function updateUiElements(postData) {
 async function completeFlow() {
   const weatherInfo = await queryWeatherApi(baseURL, key);
   const postReturn = await sendPostData(weatherInfo);
-  updateUiElements(postReturn)
+  const userData = await getUserData();
+  updateUiElements(userData)
 }
 
 // this function returns the zip code entered by the user
