@@ -1,7 +1,12 @@
-import { checkForName } from './js/nameChecker'
+// import { checkForName } from './js/nameChecker'
 import { handleSubmit } from './js/formHandler'
+import './styles/base.scss';
+import './styles/form.scss';
 
-console.log(checkForName);
+// val = document.querySelector('#name');
 
-alert("I EXIST")
-console.log("CHANGE!!");
+// console.log(handleSubmit);
+const el = document.querySelector('#name');
+const submitButton = document.querySelector('#submit');
+submitButton.addEventListener('click', handleSubmit)
+
