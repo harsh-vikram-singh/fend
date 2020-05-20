@@ -31,11 +31,14 @@ const sections = document.querySelectorAll("section");
 // a function that returns a document fragment that can be added to the document, parentUl in this case
 const getFragment = () => {
     const fragment = document.createDocumentFragment();
+    let i = 1;
     for (section of sections) {
         const li = document.createElement('li');
         li.innerText = section.dataset.nav;
         li.classList.toggle("menu__link")
+        li.id = `navsection${i}`
         fragment.appendChild(li);
+        i = i + 1;
     }
     return fragment;
 }
@@ -44,6 +47,23 @@ const makeNavBar = () => {
     parentUl.appendChild(getFragment())
     return;
 };
+
+////////////////////// helper function to make the nav element as active /////////////////////////////
+const makeNavActive = (elementId) => {
+    elementId = 'nav' + elementId;
+    // console.log('from makeNavActive', elementId)
+    let allNav = document.querySelectorAll('li');
+    // console.log(allNav);
+    for (nav of allNav) {
+        // console.log(nav)
+        if (nav.id === elementId && !nav.classList.contains('clicked')) {
+            nav.classList.add('clicked')
+        } else if (nav.id != elementId && nav.classList.contains('clicked')) {
+            nav.classList.remove('clicked')
+        }
+    }
+}
+
 
 ////////////////////// helper functions to make a section active ///////////////
 const makeActive = (targetId, className) => {
@@ -74,7 +94,10 @@ window.addEventListener('scroll', function () {
     for (section of allSections) {
         var dist = section.getBoundingClientRect();
         if (dist.y < 215 && dist.y > 0) {
+            console.log('scroll event listener calling makeactive for ', section.id)
             makeActive(section.id, 'your-active-class')
+            console.log('printing from scrollEventListener', section.id)
+            makeNavActive(section.id);
         }
     }
 })
@@ -100,6 +123,7 @@ parentUl.addEventListener('click', (event) => {
     const scrollTo = document.getElementById(targetId);
     scrollTo.scrollIntoView({ behavior: "smooth" });
     makeActive(targetId, 'your-active-class');
+    makeNavActive(targetId);
 })
 // Build menu
 
