@@ -1,3 +1,6 @@
 weather-journal-app/node_modules
 evaluate-news-nlp/.env
 evaluate-news-nlp/node_modules
+capstone/node_modules
+capstone/dist
+capstone/.env
