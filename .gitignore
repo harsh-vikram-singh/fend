@@ -4,3 +4,5 @@ evaluate-news-nlp/node_modules
 capstone/node_modules
 capstone/dist
 capstone/.env
+*/node_modules
+*/dist
