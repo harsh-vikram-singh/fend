@@ -17,20 +17,22 @@
         <section class="left">
             <img src="../images/bridge.jpg" alt="hero-image">
         </section>
-        <form class="form-container">
-
-            <input type="text" name="destination" placeholder="Search your destination">
-            <input type="text" name="date" placeholder="Select your date">
-            <div class="two-button">
-                <button type="submit">Search</button>
-                <button class="outlined" type="submit">Saved Trips</button>
-            </div>
-
-        </form>
+        <div class="form-container">
+            <form>
+                <input type="text" name="destination" id=destination placeholder="Search your destination" required>
+                <!-- <input type="date" id="travelDate" name="travelDate" value="2020-05-21"> -->
+                <!-- <input type="date" id="travelDate" name="travelDate" min="2020-01-01" max="2020-12-31"> -->
+                <input type="date" id="travelDate" value="2017-06-01">
+                <div class="two-button">
+                    <button type="submit" id="submit-btn">Search</button>
+                    <button class="outlined" type="submit" id="saved-trips-btn">Saved Trips</button>
+                </div>
+            </form>
+        </div>
         <section class="right">
-            <div id="background-blur">
+            <!-- <div id="background-blur">
                 <img src="../images/right_3.png" alt="blurred-background">
-            </div>
+            </div> -->
         </section>
 
         <section id="tagline">
