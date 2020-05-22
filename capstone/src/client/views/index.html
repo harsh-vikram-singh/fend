@@ -18,18 +18,22 @@
             <img src="../images/tom-barrett-M0AWNxnLaMw-unsplash.jpg" alt="hero-image">
         </section>
         <section class="right">
-            <div class="form-container">
-                <label class="mdc-text-field mdc-text-field--filled">
-                    <span class="mdc-text-field__ripple"></span>
-                    <input class="mdc-text-field__input" type="text" aria-labelledby="my-label-id">
-                    <span class="mdc-floating-label" id="my-label-id">Hint text</span>
-                    <span class="mdc-line-ripple"></span>
-                </label>
-            </div>
             <div id="background-blur">
                 <img src="../images/right_3.png" alt="blurred-background">
             </div>
         </section>
+
+        <!-- form for searching the location -->
+        <form class="form-container">
+
+            <input type="text" name="destination" placeholder="Search your destination">
+            <input type="text" name="date" placeholder="Select your date">
+            <div class="two-button">
+                <button type="submit">Search</button>
+                <button class="outlined" type="submit">Saved Trips</button>
+            </div>
+
+        </form>
 
         <section id="tagline">
             <h2>Let's plan that journey now...</h2>

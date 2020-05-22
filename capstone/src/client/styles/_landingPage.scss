@@ -1,5 +1,14 @@
 // @use "@material/textfield";
 // @include textfield.core-styles;
+@use "@material/theme" with (
+  $primary: #9c27b0,
+  $secondary: #76ff03,
+  $background: #fff,
+);
+// @use "material-components-web";
+@import "@material/textfield/mdc-text-field";
+@import "@material/button/mdc-button";
+
 
 #container__1 {
   display: grid;
@@ -23,7 +32,7 @@ header {
 
 
 .left {
-  visibility: hidden;
+  // visibility: hidden;
   grid-column: 1 / 2;
   grid-row: 1 / -1;
   display: flex;
@@ -85,3 +94,53 @@ header {
   }
 }
 
+// styling for the form on first page - location search
+.form-container {
+  grid-column: 2 / -1;
+  grid-row: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+input[type="text"] {
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  background-color: grey;
+  color: white;
+  padding: 1rem;
+  margin: 2rem;
+  width: 20rem;
+
+  &::placeholder{
+    color: rgb(197, 193, 193);
+  }
+
+  &:focus {
+    border: 1px orangered solid;
+  }
+}
+
+button{
+  border: none;
+  outline: none;
+  background-color: #EB5757;
+  color: white;
+  border-radius: 2px;
+  padding: 5px;
+
+  &.outlined {
+    background-color: transparentize($color: #000000, $amount: .8);
+    outline: 2px #EB5757 solid;
+  }
+}
+
+
+.two-button {
+  width: 20rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
