@@ -1,0 +1,32 @@
+input[type="text"] {
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  background-color: $background-color-secondary;
+  color: white;
+  padding: 1.4rem;
+  margin: 2rem;
+  width: 25rem;
+
+  &::placeholder{
+    color: rgb(197, 193, 193);
+  }
+
+  &:focus {
+    border: 1px orangered solid;
+  }
+}
+
+button{
+  border: none;
+  outline: none;
+  background-color: #EB5757;
+  color: white;
+  border-radius: 2px;
+  padding: 5px;
+
+  &.outlined {
+    background-color: transparentize($color: #000000, $amount: .8);
+    outline: 2px #EB5757 solid;
+  }
+}

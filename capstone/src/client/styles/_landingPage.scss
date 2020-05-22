@@ -1,13 +1,22 @@
 // @use "@material/textfield";
 // @include textfield.core-styles;
-@use "@material/theme" with (
-  $primary: #9c27b0,
-  $secondary: #76ff03,
-  $background: #fff,
-);
-// @use "material-components-web";
-@import "@material/textfield/mdc-text-field";
-@import "@material/button/mdc-button";
+
+///////////////////////////////////////////////////////////////////
+
+//////////////// sass variables //////////////////////////////////
+$background-color-primary: #333333;
+$background-color-secondary: #4F4F4F;
+$text-color-primary: #F2F2F2;
+$text-color-secondary: #BDBDBD;
+$button-color-primary: #EB5757;
+$c-red: #EB5757;
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////
 
 
 #container__1 {
@@ -27,7 +36,7 @@ header {
   margin: 2rem;
   font-weight: 700;
   font-size: 3.6rem;
-  color: red;
+  color: $text-color-primary;
 }
 
 
@@ -45,10 +54,11 @@ header {
 
   img {
     transform: scaleX(-1);
-    width: 80%;
-    height: 100vh;
+    width: 100%;
+    min-height: 100vh;
     background: linear-gradient(0deg, rgba(78, 78, 78, 0.1), rgba(78, 78, 78, 0.1));
     border-radius: 51px 0px 0px 50px;
+    object-fit: cover;
   }
 }
 
@@ -66,7 +76,7 @@ header {
 
   #background-blur {
     background: rgba(130, 130, 130, 0.8);
-    filter: blur(10rem);
+    filter: blur(20rem);
   }
 
   img {
@@ -103,40 +113,6 @@ header {
   align-items: center;
   flex-direction: column;
 }
-
-input[type="text"] {
-  border: none;
-  outline: none;
-  border-radius: 3px;
-  background-color: grey;
-  color: white;
-  padding: 1rem;
-  margin: 2rem;
-  width: 20rem;
-
-  &::placeholder{
-    color: rgb(197, 193, 193);
-  }
-
-  &:focus {
-    border: 1px orangered solid;
-  }
-}
-
-button{
-  border: none;
-  outline: none;
-  background-color: #EB5757;
-  color: white;
-  border-radius: 2px;
-  padding: 5px;
-
-  &.outlined {
-    background-color: transparentize($color: #000000, $amount: .8);
-    outline: 2px #EB5757 solid;
-  }
-}
-
 
 .two-button {
   width: 20rem;
