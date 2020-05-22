@@ -6,3 +6,4 @@ capstone/dist
 capstone/.env
 */node_modules
 */dist
+*vscode*
