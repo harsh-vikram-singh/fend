@@ -15,19 +15,28 @@
         </header>
 
         <section class="left">
-            <img src="../images/bridge.jpg" alt="hero-image">
+            <img id="heroImage" src="../images/bridge.jpg" alt="hero-image">
         </section>
         <div class="form-container">
             <form>
                 <input type="text" name="destination" id=destination placeholder="Search your destination" required>
                 <!-- <input type="date" id="travelDate" name="travelDate" value="2020-05-21"> -->
                 <!-- <input type="date" id="travelDate" name="travelDate" min="2020-01-01" max="2020-12-31"> -->
-                <input type="date" id="travelDate" value="2017-06-01">
+                <input type="date" id="travelDate">
                 <div class="two-button">
                     <button type="submit" id="submit-btn">Search</button>
                     <button class="outlined" type="submit" id="saved-trips-btn">Saved Trips</button>
                 </div>
             </form>
+            <div id="tripDetails" class="hidden">
+                <h4>Your trip to:</h4>
+                <h1 id="destinationName"></h1><br /><br />
+
+                <h4>Weather forecast:</h4>
+                <div id="weatherForecast"></div>
+
+                <h3 id="todos">+ add todos</h3>
+            </div>
         </div>
         <section class="right">
             <!-- <div id="background-blur">
