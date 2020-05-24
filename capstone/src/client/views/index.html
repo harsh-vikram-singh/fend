@@ -48,6 +48,15 @@
         </section>
 
     </div>
+    <script>
+        // check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // use the window load method to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js');
+            });
+        }
+    </script>
 </body>
 
 </html>

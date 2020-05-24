@@ -14,6 +14,12 @@ app.listen(8081, function () {
   console.log('Example app listening on port 8081')
 })
 
+app.get('/', function (req, res) {
+  console.log('hitting the endpoint /')
+  res.sendFile(path.resolve('dist/index.html'))
+  // res.sendFile(path.resolve('src/client/views/index.html'))
+})
+
 app.post('/tripinfo', async (req, res) => {
   console.log('hitting the POST /tripinfo endpoint');
   console.log(req.body);
