@@ -47,4 +47,12 @@ button{
     background-color: transparentize($color: #000000, $amount: .8);
     outline: 2px $button-color-primary solid;
   }
+
+  &:hover {
+    cursor: pointer;
+  }
+  
+  &:active {
+    background-color: lighten($color: #a35555, $amount: .8)
+  }
 }

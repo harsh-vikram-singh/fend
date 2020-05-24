@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 h4 {
   font-weight: 300;
   font-size: 3.4rem;
@@ -14,4 +16,17 @@ h1 {
 h6 {
   font-weight: 300;
   font-size: 2rem;
+}
+
+#todos-button {
+  background-color: $background-color-secondary;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+li {
+  font-size: 1.5rem;
 }

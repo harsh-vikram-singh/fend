@@ -129,7 +129,7 @@ const makeUiChanges = async (forecast, formData) => {
   console.log(forecast.data[daysOut])
   const { app_max_temp, app_min_temp, precip, wind_spd } = forecast.data[daysOut];
   const weatherUpdate = `
-  <h6>Maximum temperature: <span>${app_min_temp}</span>
+  <h6>Maximum temperature: <span>${app_max_temp}</span>
     </h6>
     <h6>Minimum temperature: <span>${app_min_temp}</span>
     </h6>
@@ -138,10 +138,20 @@ const makeUiChanges = async (forecast, formData) => {
     <h6>Precipitation: <span>${precip}</span>
     </h6>
   `
+
   // selecting the element to append the forecast to:
   document.querySelector("#weatherForecast").innerHTML = weatherUpdate;
-
-  // implementing the functionality to add todo elements
-
-
 }
+
+// implementing the functionality to add todo elements
+document.querySelector('#todos-button').addEventListener('click', () => {
+  showTodoInput();
+  document.querySelector('#addTodoButton').addEventListener('click', addTodo)
+  document.querySelector('#addTodoInput').addEventListener('keypress', e => {
+    if (e.key === "Enter") {
+      addTodo();
+    }
+  })
+});
+
+
