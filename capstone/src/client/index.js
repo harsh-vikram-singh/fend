@@ -28,7 +28,7 @@ submitButton.addEventListener('click', async e => {
     travelDate: travelDate.value
   }
 
-  //////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////
   console.log('calculating remaining days:')
   const remDays = getRemainingDays(formData);
   if (remDays > 15 || remDays < 0) {
@@ -36,7 +36,7 @@ submitButton.addEventListener('click', async e => {
     return;
   } else formData['remainingDays'] = remDays;
   console.log(remDays);
-  ////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////
 
   // making request to the express server
   const serverResponse = await serverRequest(formData)
@@ -67,7 +67,6 @@ submitButton.addEventListener('click', async e => {
 
 const locationSearch = async term => {
   const testData = await fetch(`http://api.geonames.org/searchJSON?q=${term}&maxRows=1&username=emily263`);
-  // const testData = await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?city=${term}&key=c439b0d8aa6d4e2a80fa3cf22c1384ca`)
   const resp = await testData.json();
   // console.log(resp)
   const { lat, lng } = resp.geonames['0'];
@@ -153,5 +152,3 @@ document.querySelector('#todos-button').addEventListener('click', () => {
     }
   })
 });
-
-
