@@ -40,3 +40,16 @@ li {
 #addTodoInput {
   margin: 2px 0;
 }
+
+@media (max-width: 730px) {
+
+  #tripDetails {
+    margin: 5px;
+  }
+
+  #addTodoInput {
+    margin: 2px 0;
+    width: 150px;
+  }
+
+}

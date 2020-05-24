@@ -41,7 +41,7 @@ button{
   border-radius: 2px;
   padding: 5px;
   margin-top: 2rem;
-  width: 10rem;
+  max-width: 10rem;
 
   &.outlined {
     background-color: transparentize($color: #000000, $amount: .8);
