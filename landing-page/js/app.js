@@ -49,14 +49,15 @@ const makeNavBar = () => {
 };
 
 ////////////////////// helper function to make the nav element as active /////////////////////////////
-const makeNavActive = (elementId) => {
+const makeNavActive = async (elementId) => {
     elementId = 'nav' + elementId;
-    // console.log('from makeNavActive', elementId)
+    console.log('******from makeNavActive', elementId, '*********')
     let allNav = document.querySelectorAll('li');
     // console.log(allNav);
     for (nav of allNav) {
         // console.log(nav)
         if (nav.id === elementId && !nav.classList.contains('clicked')) {
+            console.log(`******making ${nav.id} active********`)
             nav.classList.add('clicked')
         } else if (nav.id != elementId && nav.classList.contains('clicked')) {
             nav.classList.remove('clicked')
@@ -66,13 +67,29 @@ const makeNavActive = (elementId) => {
 
 
 ////////////////////// helper functions to make a section active ///////////////
-const makeActive = (targetId, className) => {
+const makeActive = async (targetId, className) => {
     console.log('target_id: ', targetId, ', className: ', className)
     for (section of sections) {
         if (section.getAttribute('id') == targetId) {
             section.classList.add(className);
         } else {
             section.classList.remove(className);
+        }
+    }
+}
+
+//////////////////////helper function to calculate distances while scrolling and makeing sections active ///////////
+// detecting the distance for all the sections:
+const getSectionDistances = async () => {
+    const sections = document.querySelectorAll('section');
+    for (section of sections) {
+        const dist = section.getBoundingClientRect().y;
+        console.log(section.id, dist)
+        if (dist < 160 && dist > 80) {
+            console.log(`##### calling makeNavActive with ${section.id} #####`)
+            await makeNavActive(section.id)
+            console.log(section.id, dist)
+            await makeActive(section.id, 'your-active-class')
         }
     }
 }
@@ -89,18 +106,19 @@ makeNavBar();
 
 // TODO: Add class 'active' to section when near top of viewport
 
-window.addEventListener('scroll', function () {
-    allSections = document.querySelectorAll('section');
-    for (section of allSections) {
-        var dist = section.getBoundingClientRect();
-        if (dist.y < 215 && dist.y > 0) {
-            console.log('scroll event listener calling makeactive for ', section.id)
-            makeActive(section.id, 'your-active-class')
-            console.log('printing from scrollEventListener', section.id)
-            makeNavActive(section.id);
-        }
-    }
-})
+window.addEventListener('scroll', getSectionDistances)
+
+// function () {
+// allSections = document.querySelectorAll('section');
+// for (section of allSections) {
+//     var dist = section.getBoundingClientRect();
+//     if (dist.y < 215 && dist.y > 0) {
+//         console.log('scroll event listener calling makeactive for ', section.id)
+//         makeActive(section.id, 'your-active-class')
+//         console.log('printing from scrollEventListener', section.id)
+//         makeNavActive(section.id);
+//     }
+// }
 
 
 // Scroll to anchor ID using scrollTO event
@@ -129,6 +147,6 @@ parentUl.addEventListener('click', (event) => {
 
 // Scroll to section on link click
 
-// Set sections as active
+// document.addEventListener('click', getSectionDistances)
 
 
