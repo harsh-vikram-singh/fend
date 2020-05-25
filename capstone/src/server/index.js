@@ -29,10 +29,8 @@ app.post('/tripinfo', async (req, res) => {
   res.send({ status: 'OK' })
 })
 
-app.get('/tripinfo', async (req, res) => {
+app.get('/health', (req, res) => {
   console.log('hitting the GET /tripinfo endpoint');
   // console.log(req.body);
-  res.send('info returned from the server')
+  res.send('OK')
 })
-
-export { serveFile }
