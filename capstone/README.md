@@ -17,6 +17,10 @@ The Aylien API is perhaps different than what you've used before. It has you ins
 
 Set-up the API keys for Geonames api to get location of the place entered by the user, Pixabay api to fetch the image, and weatherbit api to get the weather forecast. This api provides a weather forecast for next 15 days only. If the user selects a date which is more than 15 days into the future, a message is printed into the console. 
 
+## Additional functionality
+
+As per the project requirements, the additional functionality implemented was the ability to add Todo Items, after the user searches for the location and gets the results. An `+ Add todo` button is provided that user can use to add todo items.
+
 
 ## To run the project
 
